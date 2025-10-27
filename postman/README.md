@@ -1,2 +1,2 @@
-All Postman components for testing the connected APIs
+All Postman components for testing the connected APIs.
 
