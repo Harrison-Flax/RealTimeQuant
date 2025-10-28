@@ -1,2 +1,0 @@
-All Python + Database components.
-
