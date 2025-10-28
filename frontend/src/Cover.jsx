@@ -30,7 +30,7 @@ function Cover() {
 
                 {/* Footer */}
                 <footer className="mt-auto text-white-50">
-                    <p>Cover template for <a href="https://getbootstrap.com/" className="text-white">Bootstrap</a>, by <a href="https://x.com/mdo" className="text-white">@mdo</a>.</p>
+                    <p>Made with ❤️ in Dallas, TX at <a href="https://smu.edu/" className="text-white">SMU</a>, by <a href="https://github.com/Harrison-Flax" className="text-white">@Harrison-Flax</a>, and <a href="https://github.com/ekayizzi" className="text-white">@ekayizzi</a>.</p>
                 </footer>
             </div>
         </dive>
