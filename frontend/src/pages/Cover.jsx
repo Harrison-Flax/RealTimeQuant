@@ -3,16 +3,17 @@ import { Link } from "react-router-dom"
 function Cover() {
     return (
         <dive className="d-flex h-100 text-center text-bg-dark">
-            <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+            <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-between">
 
                 {/* Header */}
                 <header className="mb-auto">
                     <div>
                         <h3 className="float-md-start mb-0">RealTimeQuant</h3>
                         <nav className="nav nav-masthead justify-content-center float-md-end">
-                            <a className="nav-link active" aria-current="page" href="#">Home</a>
-                            <a className="nav-link" href="#">Features</a>
-                            <a className="nav-link" href="#">Contact</a>
+                            <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                            <Link className="nav-link" to="/page1">Page 1</Link>
+                            <Link className="nav-link" to="/page2">Page 2</Link>
+                            <Link className="nav-link" to="/page3">Page 3</Link>
                         </nav>
                     </div>
                 </header>
@@ -24,7 +25,7 @@ function Cover() {
                         This is the beginning of the RealTimeQuant webpage!
                         </p>
                     <p className="lead">
-                        <a href="#" className="btn btn-lg btn-secondary fw-bold border-blue bg-blue">Let's Go!</a>
+                        <Link to="/page1" className="btn btn-lg btn-secondary fw-bold border-blue bg-blue">Let's Go!</Link>
                     </p>
                 </main>
 
