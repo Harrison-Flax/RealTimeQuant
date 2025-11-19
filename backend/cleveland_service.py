@@ -1,11 +1,13 @@
 import pandas as pd
+# Glob finds patterns in the path names
+# Makes identifying paths easier
 import glob
 import os
 
 def get_cleveland_data(data_dir="data"):
     # Merges all of the CSV files in the data directory
     csv_path = os.path.join(os.getcwd(), data_dir, "*.csv")
-    files = glob.glob(csv_pattern)
+    files = glob.glob(csv_path)
 
     if not files:
         print(f"Warning: No CSV files found in {csv_path}")

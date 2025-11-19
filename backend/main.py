@@ -81,7 +81,7 @@ def ai_chat(data: AIRequest):
             model="gpt-5-mini",
             messages=messages,
             # Setting max tokens for limits and cost reduction (even though the price is in cents)
-            max_tokens=150,
+            max_completion_tokens=150,
             # Temperature sets how effective the AI model is at reasoning
             # 0.75 should be good for analyzing and explaining the data values
             temperature=0.75,

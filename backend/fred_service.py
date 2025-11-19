@@ -23,7 +23,7 @@ def get_fred_series(series_id: str, start_date="2020-01-01"):
 
     # Read in the requests from the URL and parameters
     # Save it to a json file 
-    response = requests.get(FRED_BASE_URL, parameters=parameters)
+    response = requests.get(FRED_BASE_URL, params=parameters)
     response.raise_for_status()
     data = response.json()
 

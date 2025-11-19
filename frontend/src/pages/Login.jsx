@@ -72,7 +72,7 @@ export function Login() {
                     </>
                 ) : (
                     <>
-                        <p>Enter the code sent to {email}</p>
+                        <p>Enter the code 56789</p>
                         <div className="form-floating mb-3 text-dark">
                             <input className="form-control" id="floatCode" placeholder="56789"
                                 value={code} onChange={e => setCode(e.target.value)} />

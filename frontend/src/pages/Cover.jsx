@@ -22,12 +22,12 @@ export function Cover() {
                 <main className="px-3">
                     <h1>Welcome!</h1>
                     <p> </p>
-                    <p className="lead">
+                    <div className="lead">
                         <p>Here, you can see inferences about the financial data analyzed from FRED and Cleveland.</p> 
                         <p>There is the ability to login below as well.</p> 
                         <p>ChatGPT is integrated within the frontend and backend here so you can ask it questions including about the visualizations.</p>
                         <p>If you want to view the source code, just visit our GitHub pages below for the repository!</p>
-                        </p>
+                    </div>
                     <p className="lead">
                         <Link to="/login" className="btn btn-lg btn-secondary fw-bold border-blue bg-blue">Login</Link>
                     </p>
