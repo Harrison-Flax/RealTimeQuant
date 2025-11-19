@@ -11,8 +11,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/cover" element={<Cover/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/Cover" element={<Cover/>}/>
+        <Route path="/Login" element={<Login/>}/>
         <Route path="/page1" element={<Page1/>}/>
         <Route path="/page2" element={<Page2/>}/>
         <Route path="/page3" element={<Page3/>}/>
