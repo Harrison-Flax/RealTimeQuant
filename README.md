@@ -11,7 +11,7 @@ We have successfully integrated:
 Note: 
 - Node.Js is used to manage the server along Vite and Uvicorn to handle running both the frontend and backend in one command and terminal
 - We used React, Python, CSS, and Node.Js in development
-- We used Amazon Q (CodeWhisperer) in VSCode for boilerplate and monotonous React and Python code to speed up development
+- We used Amazon Q (CodeWhisperer) in VSCode for boilerplate and monotonous React and Python code to speed up development and reduce time reading documentation libraries
   - Ex) React page formatting, steps, and formatting dates with the CSV files
 
 Homepage:
