@@ -78,7 +78,7 @@ def ai_chat(data: AIRequest):
 
     try: 
         response = client.chat.completions.create(
-            model="gpt-5-mini",
+            model="gpt-4o-mini",
             messages=messages,
             # Setting max tokens for limits and cost reduction (even though the price is in cents)
             max_completion_tokens=150,

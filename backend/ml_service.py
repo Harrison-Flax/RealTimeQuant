@@ -31,11 +31,11 @@ def generate_forecast():
         "level_pred": latest_prediction,
         # Include historical values to add more data to the chart
         "history": [
-            {"date": "2025-10-11", "level": 0.295, "delta": -0.045},
-            {"date": "2025-09-11", "level": 0.34, "delta": -0.03},
-            {"date": "2025-08-11", "level": 0.37, "delta": -0.02},
-            {"date": "2025-07-11", "level": 0.39, "delta": -0.015},
-            {"date": "2025-06-11", "level": 0.405, "delta": -0.01},
+            {"date": "2025-10-11", "value": 0.295, "delta": -0.045},
+            {"date": "2025-09-11", "value": 0.34, "delta": -0.03},
+            {"date": "2025-08-11", "value": 0.37, "delta": -0.02},
+            {"date": "2025-07-11", "value": 0.39, "delta": -0.015},
+            {"date": "2025-06-11", "value": 0.405, "delta": -0.01},
             {"date": "2025-11-11", "value": latest_prediction}
         ]
     }
