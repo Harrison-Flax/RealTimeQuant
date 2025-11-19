@@ -6,10 +6,15 @@ from pydantic import BaseModel
 # We're using a very cheap and small ChatGPT model (gpt-5-mini)
 # Reference: https://platform.openai.com/docs/pricing
 import openai
+import os 
+from dotenv import load_dotenv
 # Communicates with frontend
 # Reference: https://fastapi.tiangolo.com/tutorial/cors/
 from fastapi.middleware.cors import CORSMiddleware
-from services.ml_service import generate_forecast
+from ml_service import generate_forecast
+
+# Load in ChatGPT API key
+load_dotenv()
 
 app = FastAPI()
 
@@ -21,6 +26,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Pydantic models to get the different requests
 # Login, Two-Factor (Dummy), and ChatGPT Integration
@@ -65,12 +72,12 @@ def verify_2fa(data: TwoFARequest):
 @app.post("/api/ai-chat")
 def ai_chat(data: AIRequest):
     messages = [
-        {"role": "system", "content": "You are a helpful assistant that reads in financial data and helps the user infer reasoning from it."},
+        {"role": "system", "content": f"You are a helpful assistant that reads in financial data and helps the user infer reasoning from it. Here is the current market data context: {data.context_data}"},
         {"role": "user", "content": data.prompt},
     ]
 
     try: 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-5-mini",
             messages=messages,
             # Setting max tokens for limits and cost reduction (even though the price is in cents)
@@ -80,7 +87,8 @@ def ai_chat(data: AIRequest):
             temperature=0.75,
         )
         ai_reply = response.choices[0].message['content'].strip()
-        return {"response": ai_reply}
-    except openai.error.OpenAIError as e:
+        
+        return {"analysis": ai_reply}
+    except Exception as e:
+        print(f"OpenAI Error: {e}")
         raise HTTPException(status_code=500, detail=f"Error in ChatGPT request: {e}")
-

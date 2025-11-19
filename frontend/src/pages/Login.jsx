@@ -7,6 +7,7 @@ export function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [code, setCode] = useState('');
+    const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const handleLogin = async () => {
@@ -18,8 +19,15 @@ export function Login() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
             });
-            if (result.ok) setStep(2);
-            else alert("Invalid credentials");
+
+            const data = await result.json();
+
+            if (result.ok && data.status === "2FA_REQUIRED") {
+                setMessage(data.message);
+                setStep(2);
+            } else {
+                alert("Invalid credentials");
+            }
         } catch (e) {
             console.error(e);
             alert("There is an issue with the backend service or not connected")
@@ -30,7 +38,7 @@ export function Login() {
         // Call backend logic again for the mock 2FA
         try {
             const result = await fetch('http://localhost:8000/api/verify2fa',
-                {
+            {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, code })
@@ -44,11 +52,6 @@ export function Login() {
     };
 
     return (
-        <div className="d-flex h-100 text-center text-bg-dark align-items-center justify-content-center">
-            <div className="card text-bg-secondary mb-3 p-4" style={{maxWidth: "24rem", width: "100%"}}>
-                <h3 className="mb-4">{step === 1 ? "Sign In" : "Two-Factor Auth"}</h3>
-                
-                return (
         <div className="d-flex h-100 text-center text-bg-dark align-items-center justify-content-center">
             <div className="card text-bg-secondary mb-3 p-4" style={{maxWidth: "24rem", width: "100%"}}>
                 <h3 className="mb-4">{step === 1 ? "Sign In" : "Two-Factor Auth"}</h3>
@@ -84,7 +87,4 @@ export function Login() {
             </div>
         </div>
     );
-            </div>
-        </div>
-    )
 }
