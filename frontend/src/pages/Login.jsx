@@ -74,7 +74,7 @@ export function Login() {
                     <>
                         <p>Enter the code sent to {email}</p>
                         <div className="form-floating mb-3 text-dark">
-                            <input className="form-control" id="floatCode" placeholder="123456"
+                            <input className="form-control" id="floatCode" placeholder="56789"
                                 value={code} onChange={e => setCode(e.target.value)} />
                             <label htmlFor="floatCode">2FA Code</label>
                         </div>
