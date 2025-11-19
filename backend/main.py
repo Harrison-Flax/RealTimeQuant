@@ -82,11 +82,8 @@ def ai_chat(data: AIRequest):
             messages=messages,
             # Setting max tokens for limits and cost reduction (even though the price is in cents)
             max_completion_tokens=150,
-            # Temperature sets how effective the AI model is at reasoning
-            # 0.75 should be good for analyzing and explaining the data values
-            temperature=0.75,
         )
-        ai_reply = response.choices[0].message['content'].strip()
+        ai_reply = response.choices[0].message.content.strip()
         
         return {"analysis": ai_reply}
     except Exception as e:
