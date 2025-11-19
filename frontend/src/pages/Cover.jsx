@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-function Cover() {
+export function Cover() {
     return (
         <div className="d-flex h-100 text-center text-bg-dark">
             <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-between">
@@ -11,9 +11,9 @@ function Cover() {
                         <h3 className="float-md-start mb-0">RealTimeQuant</h3>
                         <nav className="nav nav-masthead justify-content-center float-md-end">
                             <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-                            <Link className="nav-link" to="/page1">Page 1</Link>
-                            <Link className="nav-link" to="/page2">Page 2</Link>
-                            <Link className="nav-link" to="/page3">Page 3</Link>
+                            <Link className="nav-link" to="/page1">Forecast</Link>
+                            <Link className="nav-link" to="/page2">AI Analyzer</Link>
+                            <Link className="nav-link" to="/page3">History</Link>
                         </nav>
                     </div>
                 </header>
@@ -21,11 +21,12 @@ function Cover() {
                 {/* Main content */}
                 <main className="px-3">
                     <h1>Welcome!</h1>
+                    <p> </p>
                     <p className="lead">
-                        - Here, you can see inferences about the financial data analyzed from FRED and Cleveland.
-                        - There is the ability to login below as well
-                        - ChatGPT is integrated within the frontend and backend here so you can ask it questions including about the visualizations.
-                        - If you want to view the source code, just visit our GitHub pages below for the repository!
+                        <p>Here, you can see inferences about the financial data analyzed from FRED and Cleveland.</p> 
+                        <p>There is the ability to login below as well.</p> 
+                        <p>ChatGPT is integrated within the frontend and backend here so you can ask it questions including about the visualizations.</p>
+                        <p>If you want to view the source code, just visit our GitHub pages below for the repository!</p>
                         </p>
                     <p className="lead">
                         <Link to="/login" className="btn btn-lg btn-secondary fw-bold border-blue bg-blue">Login</Link>
@@ -40,5 +41,3 @@ function Cover() {
         </div>
     );
 }
-
-export default Cover;

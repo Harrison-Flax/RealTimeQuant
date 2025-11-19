@@ -82,7 +82,7 @@ export function Login() {
                     </>
                 )}
                 <div className="mt-3">
-                    <Link to="/" className="text-light">Back to Home</Link>
+                    <Link to="/cover" className="text-light">Back to Home</Link>
                 </div>
             </div>
         </div>
