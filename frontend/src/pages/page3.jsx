@@ -1,36 +1,67 @@
 import { Link } from "react-router-dom"
+import {useState, useEffect } from "react";
 
 export function Page3() {
-    return (
-        <div className="d-flex h-100 text-center text-bg-dark">
-            <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-between">
+    const [data, setData] = useState(null)
 
+    useEffect(() => {
+        fetch('http://localhost:8000/api/dashboard-data')
+            .then(result => result.json())
+            .then(setData)
+            .catch(console.error);
+    }, []);
+
+    return (
+        <div className="d-flex h-100 text-center text-bg-dark flex-column">
                 {/* Header */}
-                <header className="mb-auto">
-                    <div>
+                <header className="mb-auto p-3">
                         <h3 className="float-md-start mb-0">RealTimeQuant</h3>
                         <nav className="nav nav-masthead justify-content-center float-md-end">
-                            <Link className="nav-link" to="/">Home</Link>
-                            <Link className="nav-link" to="/page1">Page 1</Link>
-                            <Link className="nav-link" to="/page2">Page 2</Link>
-                            <Link className="nav-link active" aria-current="page" to="/page3">Page 3</Link>
+                            <Link className="nav-link" to="/page1">Forecast</Link>
+                            <Link className="nav-link" to="/page2">AI Analyzer</Link>
+                            <Link className="nav-link active" to="/page3">History</Link>
+                            <Link className="nav-link" to="/">Logout</Link>
                         </nav>
-                    </div>
                 </header>
 
                 {/* Main content */}
-                <main className="px-3">
-                    <h1>Page 3</h1>
-                    <p className="lead">
-                        TBD!
-                    </p>
-                </main>
+                <main className="px-3 container">
+                <h1 className="mb-4">Historical Data Points</h1>
+                <div className="table-responsive rounded shadow-sm">
+                    <table className="table table-dark table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">CPI Value</th>
+                                <th scope="col">Trend Indicator</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data && data.history ? (
+                                data.history.map((row, index) => (
+                                    <tr key={index}>
+                                        <td>{row.date}</td>
+                                        <td>{row.value.toFixed(4)}</td>
+                                        <td>
+                                            {index > 0 && row.value > data.history[index-1].value 
+                                                ? <span className="text-danger">▲ Rising</span> 
+                                                : <span className="text-success">▼ Cooling</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr><td colSpan="3">Loading data...</td></tr>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            </main>
 
                 {/* Footer */}
-                <footer className="mt-auto text-white-50">
-                    <p>Made with ❤️ in Dallas, TX at <a href="https://smu.edu/" className="text-white">SMU</a>, by <a href="https://github.com/Harrison-Flax" className="text-white">@Harrison-Flax</a> and <a href="https://github.com/ekayizzi" className="text-white">@ekayizzi</a>.</p>
+                <footer className="mt-auto text-white-50 p-3">
+                    <p>Raw and organized financial data from backend</p>
                 </footer>
             </div>
-        </div>
     );
 }

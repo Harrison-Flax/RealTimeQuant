@@ -20,18 +20,21 @@ function Cover() {
 
                 {/* Main content */}
                 <main className="px-3">
-                    <h1>Welcome!👋</h1>
+                    <h1>Welcome!</h1>
                     <p className="lead">
-                        This is the beginning of the RealTimeQuant webpage!
+                        - Here, you can see inferences about the financial data analyzed from FRED and Cleveland.
+                        - There is the ability to login below as well
+                        - ChatGPT is integrated within the frontend and backend here so you can ask it questions including about the visualizations.
+                        - If you want to view the source code, just visit our GitHub pages below for the repository!
                         </p>
                     <p className="lead">
-                        <Link to="/page1" className="btn btn-lg btn-secondary fw-bold border-blue bg-blue">Let's Go!</Link>
+                        <Link to="/login" className="btn btn-lg btn-secondary fw-bold border-blue bg-blue">Login</Link>
                     </p>
                 </main>
 
                 {/* Footer */}
                 <footer className="mt-auto text-white-50">
-                    <p>Made with ❤️ in Dallas, TX at <a href="https://smu.edu/" className="text-white">SMU</a>, by <a href="https://github.com/Harrison-Flax" className="text-white">@Harrison-Flax</a> and <a href="https://github.com/ekayizzi" className="text-white">@ekayizzi</a>.</p>
+                    <p>Made in Dallas, TX at <a href="https://smu.edu/" className="text-white">SMU</a>, by <a href="https://github.com/Harrison-Flax" className="text-white">@Harrison-Flax</a> and <a href="https://github.com/ekayizzi" className="text-white">@ekayizzi</a>.</p>
                 </footer>
             </div>
         </dive>

@@ -1,36 +1,85 @@
 import { Link } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 export function Page2() {
-    return (
-        <div className="d-flex h-100 text-center text-bg-dark">
-            <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-between">
+    const [data, setData] = useState(null);
+    const [prompt, setPrompt] = useState("");
+    const [aiResponse, setAIResponse] = usestate("");
+    const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        fetch('http://localhost:8000/api/dashboard-data')
+        .then(result => result.json())
+        .then(setData())
+        .catch(console.error);
+    }, []);
+
+    const askAI = async () => {
+        if(!data) return;
+        setLoading(true);
+        try {
+            const result = await fetch('http://localhost:8000/api/ai-analysis'), 
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt, context_data: data })
+            });
+            const output = await result.json();
+            setAIResponse(output.analysis);
+            } catch (error) {
+                setAIResponse("Error in contact with ChatGPT.");
+            }
+            setLoading(false);
+        };
+
+    return (
+        <div className="d-flex h-100 text-center text-bg-dark flex-column">
                 {/* Header */}
-                <header className="mb-auto">
-                    <div>
+                <header className="mb-auto p-3">
                         <h3 className="float-md-start mb-0">RealTimeQuant</h3>
                         <nav className="nav nav-masthead justify-content-center float-md-end">
-                            <Link className="nav-link" to="/">Home</Link>
-                            <Link className="nav-link" to="/page1">Page 1</Link>
-                            <Link className="nav-link active" aria-current="page" to="/page2">Page 2</Link>
-                            <Link className="nav-link" to="/page3">Page 3</Link>
+                            <Link className="nav-link" to="/page1">Forecast</Link>
+                            <Link className="nav-link active" to="/page2">AI Analyzer</Link>
+                            <Link className="nav-link active" to="/page3">History</Link>
+                            <Link className="nav-link" to="/">Logout</Link>
                         </nav>
-                    </div>
                 </header>
 
-                {/* Main content */}
-                <main className="px-3">
-                    <h1>Page 2</h1>
-                    <p className="lead">
-                        WIP!
-                    </p>
-                </main>
+                 {/* Main Content */}
+                <main className="px-3 container">
+                <h1 className="mb-4">AI Market Analyst</h1>
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="card text-dark p-4 text-start">
+                            <div className="mb-3">
+                                <label className="form-label fw-bold">Have any questions about the financial forecast data?:</label>
+                                <textarea 
+                                    className="form-control" 
+                                    rows="3"
+                                    placeholder="e.g. Is the inflation trend worrying based on the 2022 data?"
+                                    value={prompt}
+                                    onChange={e => setPrompt(e.target.value)}
+                                />
+                            </div>
+                            <button className="btn btn-primary w-100" onClick={askAI} disabled={loading || !data}>
+                                {loading ? "Analyzing..." : "Generate Analysis"}
+                            </button>
+
+                            {aiResponse && (
+                                <div className="mt-4 p-3 bg-light border rounded">
+                                    <h5>AI Insight:</h5>
+                                    <p className="mb-0">{aiResponse}</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </main>
 
                 {/* Footer */}
-                <footer className="mt-auto text-white-50">
-                    <p>Made with ❤️ in Dallas, TX at <a href="https://smu.edu/" className="text-white">SMU</a>, by <a href="https://github.com/Harrison-Flax" className="text-white">@Harrison-Flax</a> and <a href="https://github.com/ekayizzi" className="text-white">@ekayizzi</a>.</p>
+                <footer className="mt-auto text-white-50 p-3">
+                    <p>Loaded from backend and analyzed by ChatGPT</p>
                 </footer>
             </div>
-        </div>
     );
 }
