@@ -17,7 +17,7 @@ export function Page3() {
                 <header className="mb-auto p-3">
                         <h3 className="float-md-start mb-0">RealTimeQuant</h3>
                         <nav className="nav nav-masthead justify-content-center float-md-end">
-                            <Link className="nav-link" to="/Cover">Home</Link>
+                            <Link className="nav-link" to="/">Home</Link>
                             <Link className="nav-link" to="/page1">Forecast</Link>
                             <Link className="nav-link" to="/page2">AI Analyzer</Link>
                             <Link className="nav-link active" to="/page3">History</Link>
