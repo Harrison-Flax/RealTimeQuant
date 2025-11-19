@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 function Cover() {
     return (
-        <dive className="d-flex h-100 text-center text-bg-dark">
+        <div className="d-flex h-100 text-center text-bg-dark">
             <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column justify-content-between">
 
                 {/* Header */}
@@ -37,7 +37,7 @@ function Cover() {
                     <p>Made in Dallas, TX at <a href="https://smu.edu/" className="text-white">SMU</a>, by <a href="https://github.com/Harrison-Flax" className="text-white">@Harrison-Flax</a> and <a href="https://github.com/ekayizzi" className="text-white">@ekayizzi</a>.</p>
                 </footer>
             </div>
-        </dive>
+        </div>
     );
 }
 

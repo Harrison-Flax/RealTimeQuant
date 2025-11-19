@@ -4,13 +4,13 @@ import { useState, useEffect } from "react"
 export function Page2() {
     const [data, setData] = useState(null);
     const [prompt, setPrompt] = useState("");
-    const [aiResponse, setAIResponse] = usestate("");
+    const [aiResponse, setAIResponse] = useState("");
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:8000/api/dashboard-data')
         .then(result => result.json())
-        .then(setData())
+        .then(data => setData(data))
         .catch(console.error);
     }, []);
 
@@ -18,19 +18,27 @@ export function Page2() {
         if(!data) return;
         setLoading(true);
         try {
-            const result = await fetch('http://localhost:8000/api/ai-analysis'), 
+            const result = await fetch('http://localhost:8000/api/ai-chat', 
             {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt, context_data: data })
             });
+
             const output = await result.json();
-            setAIResponse(output.analysis);
-            } catch (error) {
-                setAIResponse("Error in contact with ChatGPT.");
+            
+            if (output.analysis) {
+                setAIResponse(output.analysis);
+            } else {
+                setAIResponse("No analysis received from AI.");
             }
-            setLoading(false);
-        };
+
+        } catch (error) {
+            console.error(error);
+            setAIResponse("Error in contact with ChatGPT.");
+        }
+        setLoading(false);
+    };
 
     return (
         <div className="d-flex h-100 text-center text-bg-dark flex-column">
@@ -40,7 +48,7 @@ export function Page2() {
                         <nav className="nav nav-masthead justify-content-center float-md-end">
                             <Link className="nav-link" to="/page1">Forecast</Link>
                             <Link className="nav-link active" to="/page2">AI Analyzer</Link>
-                            <Link className="nav-link active" to="/page3">History</Link>
+                            <Link className="nav-link" to="/page3">History</Link>
                             <Link className="nav-link" to="/">Logout</Link>
                         </nav>
                 </header>
