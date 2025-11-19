@@ -64,7 +64,7 @@ export function Page2() {
                                 <textarea 
                                     className="form-control" 
                                     rows="3"
-                                    placeholder="e.g. Is the inflation trend worrying based on the current or 2025 data?"
+                                    placeholder="ex. Is the inflation trend worrying based on the current or 2025 data?"
                                     value={prompt}
                                     onChange={e => setPrompt(e.target.value)}
                                 />

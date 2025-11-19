@@ -53,9 +53,11 @@ export function Login() {
 
     return (
         <div className="d-flex h-100 text-center text-bg-dark align-items-center justify-content-center">
+            {/* Header */}
             <div className="card text-bg-secondary mb-3 p-4" style={{maxWidth: "24rem", width: "100%"}}>
                 <h3 className="mb-4">{step === 1 ? "Sign In" : "Two-Factor Auth"}</h3>
                 
+            {/* Main Content */}
                 {step === 1 ? (
                     <>
                         <div className="form-floating mb-3 text-dark">
