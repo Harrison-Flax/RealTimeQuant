@@ -8,6 +8,10 @@ We have successfully integrated:
 - Dummy two-factor authentication
 - Using charts to get inferences from data
 
+Note: 
+- Node.Js is used to manage the server along Vite and Uvicorn to handle running both the frontend and backend in one command and terminal
+- We used React, Python, CSS, and Node.Js in development
+
 Homepage:
 
 <img width="1280" height="699" alt="Screenshot 2025-11-19 115338" src="https://github.com/user-attachments/assets/6f4ada27-0951-49ec-ab9e-968bd84c9790" />
